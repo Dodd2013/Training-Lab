@@ -37,6 +37,21 @@ create table tb_fb_pro(
 	CONSTRAINT `FB_PR1` FOREIGN KEY (`fb_id`) REFERENCES `tb_feedbacks` (`fb_id`),
 	CONSTRAINT `FB_PR2` FOREIGN KEY (`pro_id`) REFERENCES `tb_problems` (`pro_id`)
 );
+create table tb_submit(
+	sub_id int auto_increment not null primary key,
+	user_id varchar(40) not null,
+	sub_time datetime not null,
+	fb_id int not null,
+	CONSTRAINT `SUB_FB` FOREIGN KEY (`fb_id`) REFERENCES `tb_feedbacks` (`fb_id`),
+	CONSTRAINT `SUB_US` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`)
+);
+create table tb_sub_detail(
+	sub_id int not null,
+	pro_id int not null,
+	ans text not null,
+	CONSTRAINT `SUB_DET` FOREIGN KEY (`sub_id`) REFERENCES `tb_submit` (`sub_id`),
+	CONSTRAINT `DET_PRO` FOREIGN KEY (`pro_id`) REFERENCES `tb_problems` (`pro_id`)
+);
 例如ipstats表结构如下：
 CREATE TABLE ipstats (
 ip VARCHAR(15) NOT NULL UNIQUE,

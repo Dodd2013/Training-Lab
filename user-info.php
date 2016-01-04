@@ -39,7 +39,7 @@ if ($_POST) {
 					move_uploaded_file($_FILES["user-pic"]["tmp_name"],
 						"userdata/img/" . $picname);
 					//$_msg.= "Stored in: " . "userdata/img/" . $picname;
-					$sql = "update users set img='$picname' where userid='$username';";
+					$sql = "update tb_users set user_img='$picname' where user_id='$username';";
 					//print($sql);
 					if (mysql_query($sql)) {
 						$_msg .= "change img succeed!\\n";
@@ -56,7 +56,7 @@ if ($_POST) {
 		}
 	}
 	if ($_POST['oldpwd'] != '') {
-		$res = mysql_query("select * from users where userid='$username'");
+		$res = mysql_query("select * from tb_users where user_id='$username'");
 		$row = false;
 		if (is_resource($res)) {
 			$row = mysql_fetch_array($res);
@@ -67,12 +67,12 @@ if ($_POST) {
 		$confimpwd = $_POST['confimpwd'];
 		if ($newpwd != $confimpwd) {
 			$_msg .= "Confim Password is not right!\\n";
-		} else if ($oldpwd != $row['pwd']) {
+		} else if ($oldpwd != $row['user_pwd']) {
 			$_msg .= "Old Password is not right!\\n";
 		} else if (strlen($newpwd) < 6) {
 			$_msg .= "New Password is not long then 6 chars!\\n";
 		} else {
-			$sql = "update users set pwd='$newpwd' where userid='$username';";
+			$sql = "update tb_users set user_pwd='$newpwd' where user_id='$username';";
 			if (mysql_query($sql)) {
 				$_msg .= "change password succeed!\\n";
 			}

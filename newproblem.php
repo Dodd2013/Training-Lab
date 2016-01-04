@@ -3,6 +3,32 @@
   if (!isset($_SESSION['username'])) {
   	header('Location: index.php#loginSub');
   }
+  if($_POST){
+    $postnum=count($_POST);
+    //print($_SESSION['msg']);
+    if($_POST['types']!='3'&&$postnum<=2){
+      $_SESSION['msg']="No answer here!";
+    }else{
+    require_once 'DAO.php';
+    $db=new DB();
+    $inData['pro_des'] = $_POST['des'];
+    $inData['pro_type'] = $_POST['types'];
+    $inData['pro_create_user'] = $_SESSION['username'];
+    $inData['pro_create_time'] = date('y-m-d h:i:s',time());
+    $ret = $db->insert('tb_problems', $inData,true);
+    if($ret)$_SESSION['msg']="Add problem success! Let us add more!";
+    else $_SESSION['msg']="Add problem Failure!";
+    if($_POST['types']!='3'&&$ret){
+      $ans=array_slice($_POST,2);
+      //print_r($ans);
+      $ansData['pro_id']=$ret;
+      foreach ($ans as $key => $value) {
+        $ansData['ans']=$value;
+        if(!$db->insert('tb_ans', $ansData))die("can't!");
+      }
+    }
+  }
+  }
 ?>
 <!doctype html>
 <html class="no-js">
@@ -20,6 +46,7 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
   <link rel="stylesheet" href="assets/css/admin.css">
+  
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -129,16 +156,16 @@ if ($_SESSION['img'] == '') {
             </div>
             <div class="am-btn-group doc-js-btn-1" data-am-button>
               <label class="am-btn am-btn-primary">
-                <input type="radio" name="options" value="type1" id="option1"> Radio Problem
+                <input type="radio" name="types" value="1" id="option1"> Radio Problem
               </label>
               <label class="am-btn am-btn-primary">
-                <input type="radio" name="options" value="type2" id="option2"> Checkbox Problem
+                <input type="radio" name="types" value="2" id="option2"> Checkbox Problem
               </label>
               <label class="am-btn am-btn-primary am-active">
-                <input type="radio" name="options" value="type3" id="option3"> Write
+                <input type="radio" name="types" value="3" id="option3" checked> Write
               </label>
 <!--               <label class="am-btn am-btn-primary am-disabled">
-                <input type="radio" name="options" value="选项 4" id="option4"> 选项 4
+                <input type="radio" name="types" value="选项 4" id="option4"> 选项 4
               </label> -->
             </div>
             <div id='adddiv'>
@@ -188,26 +215,32 @@ if ($_SESSION['img'] == '') {
     });
   }
   $(document).ready(function() {
-        $("input[name='options']").change(function() {
-          var $selectedvalue = $("input[name='options']:checked").val();
+        $("input[name='types']").change(function() {
+          var $selectedvalue = $("input[name='types']:checked").val();
            //alert($selectedvalue);
            if(flag){
             $("#adddiv").html("");
-            $("#addansdiv").remove();
             num=1;
           }
-          if ($selectedvalue == 'type1') {
+          if ($selectedvalue == '1') {
             //alert('1');
+              $("#addansdiv").remove();
               addbtn();
           }
-          if ($selectedvalue == 'type2') {
+          if ($selectedvalue == '2') {
             //alert('2');
+            $("#addansdiv").remove();
               addbtn();
+              
           }
-          if ($selectedvalue == 'type3') {
+          if ($selectedvalue == '3') {
+            $("#addansdiv").remove();
           }
         });
   });
+</script>
+<script>
+  <?php if(isset($_SESSION["msg"])){ $msg=$_SESSION["msg"];print("alert('$msg');");unset($_SESSION["msg"]);} ?>
 </script>
 </body>
 </html>

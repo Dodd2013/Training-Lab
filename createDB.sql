@@ -18,6 +18,7 @@ create table tb_problems(
 	CONSTRAINT `PR_US` FOREIGN KEY (`pro_create_user`) REFERENCES `tb_users` (`user_id`)
 );
 create table tb_ans(
+	ans_id int not null primary key auto_increment,
 	pro_id int not null,
 	ans text not null,
 	CONSTRAINT `ANS_PR` FOREIGN KEY (`pro_id`) REFERENCES `tb_problems` (`pro_id`)

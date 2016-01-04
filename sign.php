@@ -78,9 +78,9 @@
       $inData['user_id'] =$userid;
       $inData['user_pwd'] = $pwd;
       $inData['user_email'] = $email;
-      $inData['user_regdate'] = date('y-m-d h:i:s',time());
+      $inData['user_regdate'] = date('Y-m-d H:i:s',time());
       $ret = $db->insert('tb_users', $inData);
-      echo '插入' . ($ret ? '成功' : '失败') . '<br/>';
+      //echo '插入' . ($ret ? '成功' : '失败') . '<br/>';
       if($ret){
         $ans.="<div class='am-alert am-alert-success' id='dangerid5' style=\"margin-top:0.2em;margin-bottom:0.2em;padding:0.325em\" data-am-alert>
   <button type='button' class='am-close'>&times;</button><a class='am-btn-link' style='color:blue;' href='index.php#loginSub'>You sign succeed! Click here to login!</a></div>";

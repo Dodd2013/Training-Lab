@@ -4,7 +4,7 @@ if (!isset($_SESSION['username'])) {
 	header('Location: index.php#loginSub');
 }
 if ($_POST) {
-	include_once "config.php";
+	require_once "config.php";
 	//print_r($_POST);
 	//print_r($_FILES);
 	$h = "";
@@ -132,7 +132,7 @@ if ($_POST) {
 
 <div class="am-cf admin-main">
   <!-- sidebar start -->
-  <?php include_once "include/sidebar.php";?>
+  <?php require_once "include/sidebar.php";?>
   <!-- sidebar end -->
 
   <!-- content start -->

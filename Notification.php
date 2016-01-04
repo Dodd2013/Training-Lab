@@ -62,7 +62,7 @@
 
 <div class="am-cf admin-main">
   <!-- sidebar start -->
-  <?php include_once "include/sidebar.php";?>
+  <?php require_once "include/sidebar.php";?>
   <!-- sidebar end -->
 
   <!-- content start -->

@@ -1,24 +1,39 @@
 <?php session_start();
 if ($_POST) {
-	require_once  "config.php";
-  // require_once 'DAO.php';
+	require_once "config.php";
 	if (isset($_POST['userid'])) {
 		$username = $_POST['userid'];
 		$password = $_POST['password'];
-    // $dao=T('users');
-    // $var=$dao->get();
-    //  echo json_encode($var);
-		// $con = mysql_connect($DB_IP, $DB_USER, $DB_PASSWORD);
-		// if (!$con) {
-		// 	$ans = "can't connet to databases!;";
-		// 	die($ans);
-		// }
-		// mysql_select_db($DB_NAME, $con);
-		// //print("select * from users where userid='$username'");
+		$con = mysql_connect($DB_IP, $DB_USER, $DB_PASSWORD);
+		if (!$con) {
+			$ans = "can't connet to databases!;";
+			die($ans);
+		}
+		mysql_select_db($DB_NAME, $con);
+		//print("select * from users where userid='$username'");
+		$res = mysql_query("select * from users where userid='$username'");
+		$row = false;
+		if (is_resource($res)) {
+			$row = mysql_fetch_array($res);
+			//print_r($row);
+		}
+		if ($row && $row['pwd'] == $password) {
+			$_SESSION['username'] = $_POST['userid'];
+			$_SESSION['email'] = $row['email'];
+			$_SESSION['identity'] = $row['identity'];
+			$_SESSION['img'] = $row['img'];
+		} else {
+			if ($row) {
+				$_SESSION['error'] = "password is not right!";
+			} else {
+				$_SESSION['error'] = "username is not valid!";
+			}
+
+		}
 	}
 }
 if (!isset($_SESSION['username'])) {
-	//header('Location: index.php');
+	header('Location: index.php#loginSub');
 }
 ?>
 <!doctype html>
@@ -72,7 +87,7 @@ if (!isset($_SESSION['username'])) {
 
 <div class="am-cf admin-main">
   <!-- sidebar start******************************************************* -->
-  <?php include_once "include/sidebar.php";?>
+  <?php require_once "include/sidebar.php";?>
   <!-- sidebar end -->
 
   <!-- content start -->

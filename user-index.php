@@ -1,35 +1,27 @@
 <?php session_start();
 if ($_POST) {
 	require_once "config.php";
+  require_once 'DAO.php';
 	if (isset($_POST['userid'])) {
 		$username = $_POST['userid'];
 		$password = $_POST['password'];
-		$con = mysql_connect($DB_IP, $DB_USER, $DB_PASSWORD);
-		if (!$con) {
-			$ans = "can't connet to databases!;";
-			die($ans);
-		}
-		mysql_select_db($DB_NAME, $con);
-		//print("select * from users where userid='$username'");
-		$res = mysql_query("select * from users where userid='$username'");
-		$row = false;
-		if (is_resource($res)) {
-			$row = mysql_fetch_array($res);
-			//print_r($row);
-		}
-		if ($row && $row['pwd'] == $password) {
-			$_SESSION['username'] = $_POST['userid'];
-			$_SESSION['email'] = $row['email'];
-			$_SESSION['identity'] = $row['identity'];
-			$_SESSION['img'] = $row['img'];
-		} else {
-			if ($row) {
-				$_SESSION['error'] = "password is not right!";
-			} else {
-				$_SESSION['error'] = "username is not valid!";
-			}
-
-		}
+    $db=new DB();
+    //查询
+    $data['userid'] = $username;
+    $judge['userid'] = '=';
+    list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
+    $mData = $db->fetch('select * from users where ' . $conSql, $mapConData);
+    //var_dump($mData);
+    if($mData==false){
+      $_SESSION['error'] = "username is not valid!";
+    }else if($mData['pwd']==$password){
+      $_SESSION['username'] = $_POST['userid'];
+      $_SESSION['email'] = $mData['email'];
+      $_SESSION['identity'] = $mData['identity'];
+      $_SESSION['img'] = $mData['img'];
+    }else{
+      $_SESSION['error'] = "password is not right!";
+    }
 	}
 }
 if (!isset($_SESSION['username'])) {

@@ -30,7 +30,13 @@ create table tb_feedbacks(
 	fb_end datetime not null, 
 	fb_create_time datetime not null,
 	fb_create_user varchar(40) not null,
+	fb_askgroup int null,
 	CONSTRAINT `FB_US` FOREIGN KEY (`fb_create_user`) REFERENCES `tb_users` (`user_id`)
+);
+create table tb_group(
+	group_id int auto_increment primary key,
+	group_name varchar(40) not null,
+	group_create_time datetime not null
 );
 create table tb_fb_pro(
 	fb_id int not null,
@@ -43,6 +49,7 @@ create table tb_submit(
 	user_id varchar(40) not null,
 	sub_time datetime not null,
 	fb_id int not null,
+	group_id int null,
 	CONSTRAINT `SUB_FB` FOREIGN KEY (`fb_id`) REFERENCES `tb_feedbacks` (`fb_id`),
 	CONSTRAINT `SUB_US` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`)
 );

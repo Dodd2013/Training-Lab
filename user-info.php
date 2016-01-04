@@ -141,7 +141,7 @@ if ($_POST) {
       <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Personal information</strong> / <small>个人资料</small></div>
     </div>
 
-    <hr/>
+    <hr style="margin-top:0px;"/>
 
     <div class="am-g">
 

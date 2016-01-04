@@ -63,7 +63,7 @@
       <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Home</strong> / <small>Training Lab</small></div>
     </div>
 
-    <hr/>
+    <hr style="margin-top:0px;"/>
 
     <div class="am-g">
 

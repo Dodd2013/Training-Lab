@@ -88,7 +88,7 @@ if (!isset($_SESSION['username'])) {
       <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Home</strong> / <small>Training Lab</small></div>
     </div>
 
-    <hr/>
+    <hr style="margin-top:0px;"/>
 
     <div class="am-g">
 
@@ -146,7 +146,7 @@ if ($_SESSION['img'] == '') {
       <!-- 999999999999999999999999999999999999999999999999999999999 -->
       <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
         <div class="am-g"><div class="am-u-sm-4 am-u-sm-centered"><h1 >Welcome <?php print($_SESSION["username"]);?>!</h1></div></div>
-        <div class="am-g">
+        <!-- <div class="am-g">
           <div class="am-u-sm-4"><div class="am-panel am-panel-default">Last Feedback
           <hr/>
           </div></div>
@@ -156,8 +156,19 @@ if ($_SESSION['img'] == '') {
           <div class="am-u-sm-4"><div class="am-panel am-panel-default">Last News
           <hr/>
           </div></div>
+        </div> -->
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> Announcement</p>
+          <p style="word-break:break-all;">
+            <?php
+              $file=fopen('Notification.txt', 'r');
+              echo fread($file,"280");
+              fclose($file);
+            ?>
+          </p>
         </div>
-
+      </div>
       </div>
     </div>
   </div>

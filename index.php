@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  if (isset($_SESSION['username'])) {
+    header('Location: user-index.php');
+  }
+  session_destroy();
+ ?>
 <!DOCTYPE html>
 <html>
 <head lang="en">

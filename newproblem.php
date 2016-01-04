@@ -14,7 +14,7 @@
     $inData['pro_des'] = $_POST['des'];
     $inData['pro_type'] = $_POST['types'];
     $inData['pro_create_user'] = $_SESSION['username'];
-    $inData['pro_create_time'] = date('y-m-d h:i:s',time());
+    $inData['pro_create_time'] = date('Y-m-d H:i:s',time());
     $ret = $db->insert('tb_problems', $inData,true);
     if($ret)$_SESSION['msg']="Add problem success! Let us add more!";
     else $_SESSION['msg']="Add problem Failure!";
@@ -91,7 +91,7 @@
       <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">New feedback problem</strong> / <small>Training Lab</small></div>
     </div>
 
-    <hr/>
+    <hr style="margin-top:0px;"/>
 
     <div class="am-g">
 

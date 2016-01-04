@@ -7,18 +7,18 @@ if ($_POST) {
 		$password = $_POST['password'];
     $db=new DB();
     //查询
-    $data['userid'] = $username;
-    $judge['userid'] = '=';
+    $data['user_id'] = $username;
+    $judge['user_id'] = '=';
     list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
-    $mData = $db->fetch('select * from users where ' . $conSql, $mapConData);
+    $mData = $db->fetch('select * from tb_users where ' . $conSql, $mapConData);
     //var_dump($mData);
     if($mData==false){
       $_SESSION['error'] = "username is not valid!";
-    }else if($mData['pwd']==$password){
+    }else if($mData['user_pwd']==$password){
       $_SESSION['username'] = $_POST['userid'];
-      $_SESSION['email'] = $mData['email'];
-      $_SESSION['identity'] = $mData['identity'];
-      $_SESSION['img'] = $mData['img'];
+      $_SESSION['email'] = $mData['user_email'];
+      $_SESSION['identity'] = $mData['user_identity'];
+      $_SESSION['img'] = $mData['user_img'];
     }else{
       $_SESSION['error'] = "password is not right!";
     }

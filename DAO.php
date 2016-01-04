@@ -129,7 +129,7 @@ class DB {
         $mapData = array();
         foreach($data as $key => $value) {
             $mapIndex = ':' . ($link != ',' ? 'c' : '') . $aliasTable . $key;
-            $sql .= ' ' . ($aliasTable ? $aliasTable . '.' : '') . '`' . $key . '` ' . ($judge[$key] ? $judge[$key] : '=') . ' ' . $mapIndex . ' ' . $link;
+            $sql .= ' ' . ($aliasTable ? $aliasTable . '.' : '') . '`' . $key . '` ' . (isset($judge[$key]) ? $judge[$key] : '=') . ' ' . $mapIndex . ' ' . $link;
             $mapData[$mapIndex] = $value;
         }
         $sql = trim($sql, $link);

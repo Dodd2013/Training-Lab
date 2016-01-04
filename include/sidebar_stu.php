@@ -29,7 +29,13 @@
       <div class="am-panel am-panel-default admin-sidebar-panel">
         <div class="am-panel-bd">
           <p><span class="am-icon-bookmark"></span> Announcement</p>
-          <p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+          <p style="word-break:break-all;">
+            <?php
+              $file=fopen('Notification.txt', 'r');
+              echo fread($file,"280");
+              fclose($file);
+            ?>
+          </p>
         </div>
       </div>
 

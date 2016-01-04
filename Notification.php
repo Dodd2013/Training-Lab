@@ -1,40 +1,15 @@
-<?php session_start();
-if ($_POST) {
-	include_once "config.php";
-	if (isset($_POST['userid'])) {
-		$username = $_POST['userid'];
-		$password = $_POST['password'];
-		$con = mysql_connect($DB_IP, $DB_USER, $DB_PASSWORD);
-		if (!$con) {
-			$ans = "can't connet to databases!;";
-			die($ans);
-		}
-		mysql_select_db($DB_NAME, $con);
-		//print("select * from users where userid='$username'");
-		$res = mysql_query("select * from users where userid='$username'");
-		$row = false;
-		if (is_resource($res)) {
-			$row = mysql_fetch_array($res);
-			//print_r($row);
-		}
-		if ($row && $row['pwd'] == $password) {
-			$_SESSION['username'] = $_POST['userid'];
-			$_SESSION['email'] = $row['email'];
-			$_SESSION['identity'] = $row['identity'];
-			$_SESSION['img'] = $row['img'];
-		} else {
-			if ($row) {
-				$_SESSION['error'] = "password is not right!";
-			} else {
-				$_SESSION['error'] = "username is not valid!";
-			}
-
-		}
-	}
-}
-if (!isset($_SESSION['username'])) {
-	header('Location: index.php#loginSub');
-}
+<?php 
+  session_start();
+  if (!isset($_SESSION['username'])) {
+  	header('Location: index.php#loginSub');
+  }
+  if($_POST&&$_POST["textarea"]){
+    $file=fopen('Notification.txt', 'w+');
+    fwrite($file, $_POST["textarea"]);
+    fclose($file);
+  }
+  else
+    echo "<script>alert('Please type words first.'');</script>";
 ?>
 <!doctype html>
 <html class="no-js">
@@ -86,14 +61,14 @@ if (!isset($_SESSION['username'])) {
 </header>
 
 <div class="am-cf admin-main">
-  <!-- sidebar start******************************************************* -->
+  <!-- sidebar start -->
   <?php include_once "include/sidebar.php";?>
   <!-- sidebar end -->
 
   <!-- content start -->
   <div class="admin-content">
     <div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Home</strong> / <small>Training Lab</small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Announcement</strong> / <small>Training Lab</small></div>
     </div>
 
     <hr/>
@@ -153,19 +128,12 @@ if ($_SESSION['img'] == '') {
       </div>
       <!-- 999999999999999999999999999999999999999999999999999999999 -->
       <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-        <div class="am-g"><div class="am-u-sm-4 am-u-sm-centered"><h1 >Welcome <?php print($_SESSION["username"]);?>!</h1></div></div>
-        <div class="am-g">
-          <div class="am-u-sm-4"><div class="am-panel am-panel-default">Last Feedback
-          <hr/>
-          </div></div>
-          <div class="am-u-sm-4"><div class="am-panel am-panel-default">Last Job
-          <hr/>
-          </div></div>
-          <div class="am-u-sm-4"><div class="am-panel am-panel-default">Last News
-          <hr/>
-          </div></div>
-        </div>
-
+        <form method="post" action="Notification.php" >
+          <textarea name="textarea" cols="40" rows="10" placeholder="Type the notification."></textarea>
+          <br>
+          <br>
+          <input type="submit" value="submit">
+        </form>
       </div>
     </div>
   </div>

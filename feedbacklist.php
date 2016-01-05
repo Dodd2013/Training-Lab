@@ -1,7 +1,7 @@
 
         <table class="am-table-compact am-table-centered am-table am-table-bordered am-table-radius am-table-striped am-table-striped am-table-hover">
           <thead>
-            <tr>
+            <tr onclick="openfeedback(9);">
               <td class="am-text-middle">Id</td>
               <td class="am-text-middle">Name</td>
               <td class="am-text-middle">Begin Time</td>
@@ -50,3 +50,9 @@
         }
         tools::getPageHtml($page, $count%$num?$count/$num+1:$count/$num, "#feedbacklist.php");
         ?>
+        <script type="text/javascript">
+          function openfeedback(id) {
+            var url="feedback.php?feedbackid="+id;
+            window.open(url,'Feedback','fullscreen=yes,directories=no,titlebar=no,location=no,menubar=no,toolbar=no');
+          };
+        </script>

@@ -52,6 +52,7 @@ if (!isset($_SESSION['username'])) {
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/amazeui.datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/CityChoice.js"></script>
 </head>
 <body>
 <!--[if lte IE 9]>

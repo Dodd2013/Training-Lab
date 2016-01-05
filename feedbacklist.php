@@ -49,5 +49,4 @@
           $page=$_GET['page'];
         }
         tools::getPageHtml($page, $count%$num?$count/$num+1:$count/$num, "#feedbacklist.php");
-
         ?>

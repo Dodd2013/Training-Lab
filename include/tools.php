@@ -9,6 +9,7 @@
   */
  class tools{
 public static function getPageHtml($page, $pages, $url){
+  $pages=floor($pages);
   //最多显示多少个页码
   $_pageNum = 5;
   //当前页面小于1 则为1
@@ -64,6 +65,7 @@ public static function getPageHtml($page, $pages, $url){
    $_pageHtml .= '<li><a href="'.$url.'?page='.($page+1).'">&raquo;</a></li>';
   }
   $_pageHtml .= '</ul>';
+  if($pages>1)
   echo $_pageHtml;
  }
 }

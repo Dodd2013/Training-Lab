@@ -1,8 +1,5 @@
 <?php 
   session_start();
-  if (!isset($_SESSION['username'])) {
-  	header('Location: index.php#loginSub');
-  }
   if($_POST){
     $postnum=count($_POST);
     

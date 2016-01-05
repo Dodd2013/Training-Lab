@@ -26,6 +26,7 @@ create table tb_ans(
 create table tb_feedbacks(
 	fb_id int not null auto_increment primary key,
 	fb_name varchar(50) not null,
+	fb_des text null,
 	fb_begin datetime not null,
 	fb_end datetime not null, 
 	fb_create_time datetime not null,

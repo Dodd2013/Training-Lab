@@ -44,12 +44,14 @@ if (!isset($_SESSION['username'])) {
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
   <link rel="stylesheet" href="assets/css/admin.css">
+  <link rel="stylesheet" href="assets/css/amazeui.datetimepicker.css">
   <script type="text/javascript" src="js/Tab.js"></script>
   <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="assets/js/jquery.min.js"></script>
 <!--<![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/js/amazeui.datetimepicker.min.js" charset="UTF-8"></script>
 </head>
 <body>
 <!--[if lte IE 9]>

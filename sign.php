@@ -71,25 +71,23 @@
     if(strlen($ans)>0){
       
     }else{
-      include_once("config.php");
-      $con = mysql_connect($DB_IP,$DB_USER,$DB_PASSWORD);
-      if (!$con){
-          $ans.=str_replace("id4","id1",$divwamp)."<p>Could not connect: ". mysql_error()."</p></div>";
-          $s1.="$('#dangerid4').alert();";
-          die($ans."<script>".$s1."</script>");
-      }
-      mysql_select_db($DB_NAME, $con);
       $pwd=$_POST["password"];
       $email=$_POST["email"];
-      if(mysql_query("INSERT INTO users (userid, pwd, email,regdate) VALUES ('$userid', '$pwd', '$email',now())")){
+      require_once 'DAO.php';
+      $db=new DB();
+      $inData['user_id'] =$userid;
+      $inData['user_pwd'] = $pwd;
+      $inData['user_email'] = $email;
+      $inData['user_regdate'] = date('Y-m-d H:i:s',time());
+      $ret = $db->insert('tb_users', $inData);
+      //echo '插入' . ($ret ? '成功' : '失败') . '<br/>';
+      if($ret){
         $ans.="<div class='am-alert am-alert-success' id='dangerid5' style=\"margin-top:0.2em;margin-bottom:0.2em;padding:0.325em\" data-am-alert>
   <button type='button' class='am-close'>&times;</button><a class='am-btn-link' style='color:blue;' href='index.php#loginSub'>You sign succeed! Click here to login!</a></div>";
       }else{
         $ans.="<div class='am-alert am-alert-danger' id='dangerid5' style=\"margin-top:0.2em;margin-bottom:0.2em;padding:0.325em\" data-am-alert>
   <button type='button' class='am-close'>&times;</button><p>User Id exist!</p></div>";
       }
-      mysql_close($con);
-      
     }
     print($ans."<script>".$s1."</script>");
   }
@@ -105,7 +103,7 @@
         $pr="<label for='emailcode'>Security Code:</label>
         <input type='number' name='emailcode' id='emailcode' value=''>
         <button>";
-        include_once("config.php");
+        require ("config.php");
         if($EMAIL_SIGN)print($pr);
       ?>
       <br />

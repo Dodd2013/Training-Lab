@@ -15,12 +15,19 @@
         <li><a href="admin-table.html"><span class="am-icon-table"></span> 表格</a></li>
         <li><a href="admin-form.html"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
         <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+        <li><a href="Notification.php"><span class="am-icon-calendar"></span> Announcement</a></li>
       </ul>
 
       <div class="am-panel am-panel-default admin-sidebar-panel">
         <div class="am-panel-bd">
           <p><span class="am-icon-bookmark"></span> Announcement</p>
-          <p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+          <p style="word-break:break-all;">
+            <?php
+              $file=fopen('Notification.txt', 'r');
+              echo fread($file,"280");
+              fclose($file);
+            ?>
+          </p>
         </div>
       </div>
 

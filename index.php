@@ -233,7 +233,7 @@ Fast, flexible and pragmatic, PHP powers everything from your blog to the most p
 
       <div class="am-g">
         <div class="am-u-lg-6 am-u-md-4 am-u-sm-12">
-          <form class="am-form"id="loginfrom" action="user-index.php" method="post">
+          <form class="am-form"id="loginfrom" action="user.php" method="post">
             <label for="name" class="about-color">Login Id</label>
             <input id="name" name='userid' type="text">
             <br/>

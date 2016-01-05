@@ -60,7 +60,7 @@ public static function getPageHtml($page, $pages, $url){
   }else{
    $_pageHtml .= '<li><a  title="最后一页" href="'.$url.'?page='.$pages.'">»</a></li>';
   }*/
-  if($page<$_end){
+  if($page<$_end-1){
    $_pageHtml .= '<li><a href="'.$url.'?page='.($page+1).'">&raquo;</a></li>';
   }
   $_pageHtml .= '</ul>';

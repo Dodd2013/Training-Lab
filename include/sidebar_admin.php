@@ -8,7 +8,7 @@
             <li><a href="#newproblem.php" class="am-cf"><span class="am-icon-check"></span> New Feedbcak Problem</span></a></li>
             <li><a href="#feedback_problemlist.php"><span class="am-icon-puzzle-piece"></span> Feedbcak Problem List</a></li>
             <li><a href="#newfeedback.php"><span class="am-icon-calendar"></span> New Feedbacks</a></li>
-            <li><a href="admin-gallery.html"><span class="am-icon-th"></span> Feedback List<!-- <span class="am-badge am-badge-secondary am-margin-right am-fr">24</span> --></a></li>
+            <li><a href="#feedbacklist.php"><span class="am-icon-th"></span> Feedback List<!-- <span class="am-badge am-badge-secondary am-margin-right am-fr">24</span> --></a></li>
             <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
           </ul>
         </li>

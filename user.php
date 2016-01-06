@@ -101,7 +101,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="am-g">
 
-      <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+      <div class="am-u-sm-12 am-u-md-3 am-u-md-push-9">
         <div class="am-panel am-panel-default">
           <div class="am-panel-bd">
             <div class="am-g">
@@ -153,7 +153,7 @@ if ($_SESSION['img'] == '') {
 
       </div>
       <!-- 999999999999999999999999999999999999999999999999999999999 -->
-      <div id="mainDiv" class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+      <div id="mainDiv" class="am-u-sm-12 am-u-md-9 am-u-md-pull-3">
         <!-- <div class="am-g"><div class="am-u-sm-4 am-u-sm-centered"><h1 >Welcome <?php print($_SESSION["username"]);?>!</h1></div></div> -->
         <!-- <div class="am-g">
           <div class="am-u-sm-4"><div class="am-panel am-panel-default">Last Feedback

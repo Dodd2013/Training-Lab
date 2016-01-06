@@ -34,11 +34,6 @@ create table tb_feedbacks(
 	fb_askgroup int null,
 	CONSTRAINT `FB_US` FOREIGN KEY (`fb_create_user`) REFERENCES `tb_users` (`user_id`)
 );
-create table tb_group(
-	group_id int auto_increment primary key,
-	group_name varchar(40) not null,
-	group_create_time datetime not null
-);
 create table tb_fb_pro(
 	fb_id int not null,
 	pro_id int not null,
@@ -50,17 +45,40 @@ create table tb_submit(
 	user_id varchar(40) not null,
 	sub_time datetime not null,
 	fb_id int not null,
-	group_id int null,
+	group text null,
 	CONSTRAINT `SUB_FB` FOREIGN KEY (`fb_id`) REFERENCES `tb_feedbacks` (`fb_id`),
 	CONSTRAINT `SUB_US` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`)
 );
 create table tb_sub_detail(
 	sub_id int not null,
 	pro_id int not null,
-	ans text not null,
+	ans text null,
+	ans_id int null,
 	CONSTRAINT `SUB_DET` FOREIGN KEY (`sub_id`) REFERENCES `tb_submit` (`sub_id`),
 	CONSTRAINT `DET_PRO` FOREIGN KEY (`pro_id`) REFERENCES `tb_problems` (`pro_id`)
 );
+create table tb_resume(
+	username varchar(40) primary key,
+	chname varchar(40),
+	ginder varchar(10),
+	birth varchar(40),
+	phone varchar(40),
+	address varchar(200),
+	province varchar(20),
+	city varchar(20),
+	town varchar(20),
+	career varchar(100),
+	degree varchar(100),
+	track varchar(40),
+	project varchar(200),
+	skill varchar(40),
+	joblocation1 varchar(20),
+	joblocation2 varchar(20),
+	joblocation3 varchar(20),
+	filepath varchar(255),
+	constraint fk foreign key(username) references tb_users(user_id)
+) engine=InnoDB
+
 例如ipstats表结构如下：
 CREATE TABLE ipstats (
 ip VARCHAR(15) NOT NULL UNIQUE,

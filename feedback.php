@@ -72,7 +72,7 @@ if (!isset($_SESSION['username'])) {
 		<div class='am-form-group am-form-success am-form-icon am-form-feedback'>
 		    <label for='doc-ipt-3-a' style='text-align:right;' class='am-u-sm-2 am-form-label am-u-sm-offset-1'>Select Batch:</label>
 		    <div class='am-u-sm-8 am-u-end'>
-		      <select id='doc-select-1'>
+		      <select id='doc-select-1' name='group'>
 
 		        <option value='option1'>Open source</option>
 		        <option value='option2'>.Net class1</option>

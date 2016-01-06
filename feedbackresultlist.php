@@ -30,7 +30,7 @@
 		if($_GET){
 			$mData = $db->fetch('select fb_askgroup from tb_feedbacks where ' . $conSql, $mapConData);
 			if($mData['fb_askgroup']==0){
-				print("<tr><td colspan=3>This feedback not ask the batch! So just see ALL Result up here!</td></tr>");
+				print("<tr><td colspan=4>This feedback not ask the batch! So just see ALL Result up here!</td></tr>");
 			}else{
 				$groupsData = $db->fetchALL('select * from (select groups,sub_time from tb_submit where' . $conSql." order by sub_time desc) as tb group by groups", $mapConData);
 				//var_dump($groupsData);

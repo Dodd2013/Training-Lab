@@ -88,7 +88,6 @@ if (!isset($_SESSION['username'])) {
 		list($conSql, $mapConData) = $db->FDFields($data,"", $judge);
 		$mData = $db->fetch('select * from tb_feedbacks where ' . $conSql, $mapConData);
 		 
-		//var_dump($mData);
 	}else{
 		header('Location: index.php#loginSub');
 	}
@@ -105,24 +104,6 @@ if (!isset($_SESSION['username'])) {
 </div>
 
 <form action="submitfeedback.php" method="post" class="am-form">
-<!-- <div class='am-g'>
-		<div class='am-u-sm-3'>
-		<div class='am-form-group'>
-			<label for='doc-select-1' class='am-u-sm-5 am-form-label'>Select Batch:</label>
-			<div class='am-u-sm-7'>
-		      <select id='doc-select-1'>
-
-		        <option value='option1'>Open source</option>
-		        <option value='option2'>.Net class1</option>
-		        <option value='option2'>.Net class2</option>
-		        <option value='option2'>Java class1</option>
-		        <option value='option2'>Java class2</option>
-		      </select>
-		      <span class='am-form-caret'></span>
-		      </div>
-		    </div>
-		</div>
-		</div> -->
 <?php 
 	if($mData['fb_askgroup']=='1'){
 		if(isset($_GET['group']))$batch=$_GET['group'];
@@ -143,7 +124,7 @@ if (!isset($_SESSION['username'])) {
 		<div class='am-u-sm-10 am-u-end am-u-sm-offset-1'>
 		<?php 
 			$profbData = $db->fetchAll('select pro_id from tb_fb_pro where ' . $conSql, $mapConData);
-			//var_dump($profbData);
+			
 			print("<ol>");
 			foreach ($profbData as $k => $va) {
 				foreach ($va as $key => $v1) {
@@ -153,14 +134,14 @@ if (!isset($_SESSION['username'])) {
 					$problemData = $db->fetch('select * from tb_problems where ' . $conSql1, $mapConData1);
 					print("<li>");
 					print($problemData["pro_des"]);
-					//var_dump($problemData);
+					
 					print("</li>");
 					$proname="problem".$problemData["pro_id"];
 					$out="";
 					$out1="";
 					if($problemData["pro_type"]!='3'){
 						$ansData = $db->fetchALL('select ans,ans_id from tb_ans where ' . $conSql1, $mapConData1);
-						//var_dump($ansData);
+					
 						foreach ($ansData as $ansarraykey => $ansarray) {
 
 							if($problemData["pro_type"]=='1'){$type="radio";}
@@ -191,7 +172,7 @@ if (!isset($_SESSION['username'])) {
 						";
 						
 					}
-					//print($out);
+				
 				}
 			}
 			print("</ul>");

@@ -74,11 +74,11 @@ if (!isset($_SESSION['username'])) {
 		    <div class='am-u-sm-8 am-u-end'>
 		      <select id='doc-select-1' name='group'>
 
-		        <option value='option1'>Open source</option>
-		        <option value='option2'>.Net class1</option>
-		        <option value='option2'>.Net class2</option>
-		        <option value='option2'>Java class1</option>
-		        <option value='option2'>Java class2</option>
+		        <option value='Open source'>Open source</option>
+		        <option value='.Net class1'>.Net class1</option>
+		        <option value='.Net class2'>.Net class2</option>
+		        <option value='Java class1'>Java class1</option>
+		        <option value='Java class2'>Java class2</option>
 		      </select>
 		      <span class='am-form-caret'></span>
 		    </div>

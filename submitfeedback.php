@@ -21,9 +21,9 @@ if($_POST){
 	$inData['sub_time'] = date('Y-m-d H:i:s',time());
 	$inData['fb_id'] = $_POST['fb_id'];
 	if(isset($_POST['group'])){
-		$inData['group'] = $_POST['group'];
+		$inData['groups'] = $_POST['group'];
 	}else{
-		$inData['group'] = "null";
+		$inData['groups'] = "null";
 	}
 	$ret = $db->insert('tb_submit', $inData,true);
 	if($ret)print("submit suessed!");

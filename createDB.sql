@@ -45,7 +45,7 @@ create table tb_submit(
 	user_id varchar(40) not null,
 	sub_time datetime not null,
 	fb_id int not null,
-	group text null,
+	groups text null,
 	CONSTRAINT `SUB_FB` FOREIGN KEY (`fb_id`) REFERENCES `tb_feedbacks` (`fb_id`),
 	CONSTRAINT `SUB_US` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`)
 );
@@ -77,28 +77,4 @@ create table tb_resume(
 	joblocation3 varchar(20),
 	filepath varchar(255),
 	constraint fk foreign key(username) references tb_users(user_id)
-) engine=InnoDB
-
-例如ipstats表结构如下：
-CREATE TABLE ipstats (
-ip VARCHAR(15) NOT NULL UNIQUE,
-clicks SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0'
-);
-原本需要执行3条SQL语句，如下：
-IF (SELECT * FROM ipstats WHERE ip='192.168.0.1') {
-    UPDATE ipstats SET clicks=clicks+1 WHERE ip='192.168.0.1';
-} else {
-    INSERT INTO ipstats (ip, clicks) VALUES ('192.168.0.1', 1);
-}
-/*而现在只需下面1条SQL语句即可完成：*/
-usersINSERT INTO ipstats VALUES('192.168.0.1', 1) ON DUPLICATE KEY UPDATE clicks=clicks+1;
-注意，要使用这条语句，前提条件是这个表必须有一个唯一索引或主键。
-再看一例子：
-mysql> desc test;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| uid   | int(11)     | NO   | PRI |         |       | 
-| uname | varchar(20) | YES |     | NULL    |       | 
-+-------+-------------+------+-----+---------+-------+
-2 rows in set (0.00 sec)
+) engine=InnoDB;

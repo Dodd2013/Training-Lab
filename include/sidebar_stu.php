@@ -12,7 +12,7 @@
             <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
           </ul>
         </li> -->
-        <li><a href="user-feedback.php"><span class="am-icon-table"></span> Feedback</a></li>
+        <li><a href="#feedbacklist.php"><span class="am-icon-table"></span> Feedback</a></li>
         <li><a href="admin-form.html"><span class="am-icon-pencil-square-o"></span> Job</a></li>
         <li class="admin-parent">
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> Resume <span class="am-icon-angle-right am-fr am-margin-right"></span></a>

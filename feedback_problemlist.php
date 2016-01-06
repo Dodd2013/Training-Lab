@@ -20,7 +20,7 @@
               }
               require_once 'DAO.php';
               $db=new DB();
-              $mData = $db->fetchAll('select * from tb_problems',array(),array($l,$num));
+              $mData = $db->fetchAll('select * from tb_problems order by pro_id desc',array(),array($l,$num));
               //var_dump($mData);
               $count=$db->fetchAll('select count(*) as a from tb_problems');
               $count=$count[0]['a'];

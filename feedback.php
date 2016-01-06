@@ -43,33 +43,58 @@ if (!isset($_SESSION['username'])) {
 	
 </div>
 <div class="am-g">
-	<div class='am-u-sm-9 am-u-sm-offset-3'><?php print($mData['fb_des'])?></div>
+	<div class='am-u-sm-10 am-u-sm-end am-u-sm-offset-1'><?php print($mData['fb_des'])?></div>
 </div>
-<hr>
-<form action="" method="post" class="am-form">
+
+<form action="submitfeedback.php" method="post" class="am-form">
+<!-- <div class='am-g'>
+		<div class='am-u-sm-3'>
+		<div class='am-form-group'>
+			<label for='doc-select-1' class='am-u-sm-5 am-form-label'>Select Batch:</label>
+			<div class='am-u-sm-7'>
+		      <select id='doc-select-1'>
+
+		        <option value='option1'>Open source</option>
+		        <option value='option2'>.Net class1</option>
+		        <option value='option2'>.Net class2</option>
+		        <option value='option2'>Java class1</option>
+		        <option value='option2'>Java class2</option>
+		      </select>
+		      <span class='am-form-caret'></span>
+		      </div>
+		    </div>
+		</div>
+		</div> -->
 <?php 
 	if($mData['fb_askgroup']=='1'){
 		$askgroup="
-		<div class='am-g'>
-		<div class='am-u-sm-3 am-u-sm-offset-8'>
-		<div class='am-form-group'>
+		
+		<div class='am-form-group am-form-success am-form-icon am-form-feedback'>
+		    <label for='doc-ipt-3-a' style='text-align:right;' class='am-u-sm-2 am-form-label am-u-sm-offset-1'>Select Batch:</label>
+		    <div class='am-u-sm-8 am-u-end'>
 		      <select id='doc-select-1'>
-		        <option value='option1'>选项一...</option>
-		        <option value='option2'>选项二.....</option>
-		        <option value='option3'>选项三........</option>
+
+		        <option value='option1'>Open source</option>
+		        <option value='option2'>.Net class1</option>
+		        <option value='option2'>.Net class2</option>
+		        <option value='option2'>Java class1</option>
+		        <option value='option2'>Java class2</option>
 		      </select>
 		      <span class='am-form-caret'></span>
 		    </div>
-		</div>
-		</div>";
-		//print($askgroup);
+		  </div>
+		  <br>
+		  <br>
+		";
+		print($askgroup);
 	}
  ?>
+ <hr>
 	<div class='am-g'>
-		<div class='am-u-sm-11 am-u-end am-u-sm-offset-1'>
+		<div class='am-u-sm-10 am-u-end am-u-sm-offset-1'>
 		<?php 
 			$profbData = $db->fetchAll('select pro_id from tb_fb_pro where ' . $conSql, $mapConData);
-			//var_dump($proData);
+			//var_dump($profbData);
 			print("<ol>");
 			foreach ($profbData as $k => $va) {
 				foreach ($va as $key => $v1) {
@@ -82,16 +107,18 @@ if (!isset($_SESSION['username'])) {
 					//var_dump($problemData);
 					print("</li>");
 					$proname="problem".$problemData["pro_id"];
+					$out="";
 					if($problemData["pro_type"]!='3'){
 						$ansData = $db->fetchALL('select ans,ans_id from tb_ans where ' . $conSql1, $mapConData1);
 						//var_dump($ansData);
 						foreach ($ansData as $ansarraykey => $ansarray) {
-							if($problemData["pro_type"]=='1'){$type="checkbox";}
-							else $type="radio";
+
+							if($problemData["pro_type"]=='1'){$type="radio";}
+							else $type="checkbox";
 							$out.="
 									<div class='am-".$type."'>
 									      <label>
-									        <input type='".$type."' name='".$proname."' value='".$ansarray['ans_id']."'>
+									        <input ".($type=='radio'?"required":"")." type='".$type."' name='".$proname."' value='".$ansarray['ans_id']."'>
 									        ".$ansarray['ans']."
 									      </label>
 									    </div>
@@ -100,13 +127,12 @@ if (!isset($_SESSION['username'])) {
 					}else{
 						$out="
 							<div class='am-form-group'>
-							    <textarea placeholder='Enter your answer here!'  rows='3'"." name='".$proname."'></textarea>
+							    <textarea  placeholder='Enter your answer here!'  rows='3'"." name='".$proname."'></textarea>
 							</div>
 						";
 						
 					}
 					print($out);
-					$out="";
 				}
 			}
 			print("</ul>");
@@ -115,6 +141,8 @@ if (!isset($_SESSION['username'])) {
 	</div>
 	<div class="am-from-group">
   <div class="am-u-sm-10 am-u-end am-u-sm-offset-1">
+  <?php $fb_id=$_GET['feedbackid']; ?>
+  	<input type="hidden" name='fb_id' value='<?php print($fb_id); ?>'>
   	<button type="submit" class="am-btn am-btn-block ">Submit</button>
   	</div>
   </div>

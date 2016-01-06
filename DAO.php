@@ -71,7 +71,7 @@ class DB {
         }
     }
      
-    public function fetchAll($sql, $searchData = array(), $limit = array(0, 10), $dataMode = PDO::FETCH_ASSOC, $preType = array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY)) {
+    public function fetchAll($sql, $searchData = array(), $limit = array(0, 100), $dataMode = PDO::FETCH_ASSOC, $preType = array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY)) {
         if ($sql) {
             $sql .= ' limit ' . (int) $limit[0] . ',' . (intval($limit[1]) > 0 ? intval($limit[1]) : 10);
             //echo "$sql";

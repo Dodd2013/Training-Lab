@@ -21,7 +21,6 @@ tb_resume b on a.user_id=b.username where b.track='$skill'");
 		$tmp=1;
 		echo "<br><table>";
 		while ($row=mysql_fetch_array($result)) {
-			echo urlencode($row['user_id']);
 			if($tmp%4<=3&&$tmp%4>=2){
 				echo "<td>".$row['chname'].": <a href='#ResumeDisplay.php?username=".urlencode($row['user_id'])."'><img 
 width='100' height='65' src='userdata/img/".$row['user_img']."'/></a></td>";

@@ -64,7 +64,7 @@
             </tr>
             <tr>
               <td>Details of Project: </td>
-              <td><input type="textarea" cols="10" rows="5" name="project" required></td>
+              <td><textarea cols="10" rows="5" name="project" required></textarea></td>
             </tr>
             <tr>
               <td>IT Skills: </td>

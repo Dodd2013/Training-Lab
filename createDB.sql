@@ -79,3 +79,10 @@ create table tb_resume(
 	filepath varchar(255),
 	constraint fk foreign key(username) references tb_users(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table tb_job(
+title varchar(40),
+description varchar(200),
+comname varchar(40),
+location varchar(40),
+jstatus varchar(40)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

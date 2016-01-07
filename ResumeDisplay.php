@@ -1,4 +1,4 @@
-
+<form target="msg" method="post" class="am-form" action="ResumeDisplay_PHP.php" enctype="multipart/form-data">
 <?php
 	session_start();
 	if(isset($_GET['username'])){
@@ -26,15 +26,18 @@ Profile: <img height='200' width='330' src='userdata/img/".$_SESSION['img']."'/>
 	echo "<tr><td>Joblocation1: ".$row['joblocation1']."</td><td>Joblocation2:".$row['joblocation2']."</td><td>Joblocation3: ".$row['joblocation3']."</td></tr>";
 	echo "</table>";
 	echo "<button><a href='".$row['filepath']."'>Donwnload The Current Resume</a></button>";
-	echo "<button onclick='sendmail();'>Send Email</button>";
+	echo "<input type='hidden' name='username' value='".$username."'>";
+	if($_GET)
+		echo "<button type='submit' onclick='submitfrom();'>Send Job Resume</button>";
+	echo "</form>";
 
 	mysql_close($con);
 ?>
 
 <script type="text/javascript">
-	function sendmail(){
-		alert('Email sent successfully!');
-	}
+	function submitfrom(){
+    $("#my-alert").modal('toggle');
+  }
 </script>
 
 	

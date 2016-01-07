@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+	session_start();
 	require_once('config.php');
 	$con=mysql_connect($DB_IP, $DB_USER, $DB_PASSWORD);
 	mysql_select_db($DB_NAME,$con);

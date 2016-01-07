@@ -25,10 +25,10 @@ public static function sendEmail($to,$title,$body)
       $mail->AddReplyTo("Dodd@Dodd2014.com","mckee");//回复地址 
       $mail->From = "traininglab@sina.com"; 
       $mail->FromName = "www.Dodd2014.com/Training-Lab"; 
-      $to = "dajiyuanzi@foxmail.com"; 
+      
       $mail->AddAddress($to); 
-      $mail->Subject = "phpmailer测试标题"; 
-      $mail->Body = "<h1>phpmail演示</h1>这是php点点通（<font color=red>www.phpddt.com</font>）对phpmailer的测试内容"; 
+      $mail->Subject = $title; 
+      $mail->Body = $body;
       $mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; //当邮件不支持html时备用显示，可以省略 
       $mail->WordWrap = 80; // 设置每行字符串的长度 
       //$mail->AddAttachment("f:/test.png"); //可以添加附件 

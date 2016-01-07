@@ -3,14 +3,16 @@
 	require_once('DAO.php');
 	$db=new DB();
 	if($_POST){
-		print_r($_FILES);
-		if(move_uploaded_file($_FILES["filepath"]["tmp_name"], "userdata/resume/haha.pdf")){
-			$file="userdata/resume/haha.pdf";
+		$username=$_SESSION['username'];
+		$db->delete('tb_resume',"username='$username'");
+		if(move_uploaded_file($_FILES["filepath"]["tmp_name"], "userdata/resume/" . $_FILES["filepath"]["name"])){
+			$file="userdata/resume/" . $_FILES["filepath"]["name"];
 		}
 		else{
 			echo "File upload fail!";
 			$file="null";
 		}
+		
 		$inData['username']=$_SESSION['username'];
 		$inData['chname']=$_POST['chname'];
 		$inData['ginder']=$_POST['ginder'];

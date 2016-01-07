@@ -12,16 +12,17 @@
             <li><a href="#feedbacklistresult.php"><span class="am-icon-calendar"></span> Feedback Result</a></li>
           </ul>
         </li>
-        <!-- <li><a href="user-feedback.php"><span class="am-icon-table"></span> Feedback</a></li> -->
-<!--         <li><a href="admin-form.html"><span class="am-icon-pencil-square-o"></span> Job</a></li> -->
+        
+        <li><a href="#ViewProfile.php"><span class="am-icon-pencil-square-o"></span> Job</a></li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span> Resume <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
             <li><a href="#Resume.php" class="am-cf"><span class="am-icon-check"></span> Change Resume<!-- <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"> --></span></a></li>
-            <!-- <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> Display Resume</a></li> -->
+            <li><a href="#ResumeDisplay.php"><span class="am-icon-puzzle-piece"></span> Display Resume</a></li>
           </ul>
         </li>
         <li><a href="#user-info.php"><span class="am-icon-user"></span> Personal information</a></li>
+        <li><a href="#OnlineDic.php"><span class="am-icon-table"></span> Online Dictionary</a></li>
         <li><a href="#Notification.php"><span class="am-icon-calendar"></span> Announcement</a></li>
         <li><a href="logout.php"><span class="am-icon-sign-out"></span> Log Out</a></li>
         

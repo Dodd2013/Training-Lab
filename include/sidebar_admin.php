@@ -13,10 +13,18 @@
           </ul>
         </li>
         
-        <li><a href="#ViewProfile.php"><span class="am-icon-pencil-square-o"></span> Job</a></li>
+        <li class="admin-parent">
+          <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span> Job <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+            <li><a href="#JobAddHR.php"><span class="am-icon-pencil-square-o"></span>Add Job</a></li>
+            <li><a href="#JobView.php"><span class="am-icon-pencil-square-o"></span>Job View</a></li>
+          </ul>
+        </li>
+        
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span> Resume <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
+            <li><a href="#ViewProfile.php"><span class="am-icon-pencil-square-o"></span> Resume View</a></li>
             <li><a href="#Resume.php" class="am-cf"><span class="am-icon-check"></span> Change Resume<!-- <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"> --></span></a></li>
             <li><a href="#ResumeDisplay.php"><span class="am-icon-puzzle-piece"></span> Display Resume</a></li>
           </ul>

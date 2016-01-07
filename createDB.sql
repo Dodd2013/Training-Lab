@@ -84,5 +84,6 @@ title varchar(40),
 description varchar(200),
 comname varchar(40),
 location varchar(40),
-jstatus varchar(40)
+jstatus varchar(40),
+user_email varchar(100)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

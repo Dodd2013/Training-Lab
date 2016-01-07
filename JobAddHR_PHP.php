@@ -8,10 +8,11 @@
 		$location=$_POST['location'];
 		$description=$_POST['description'];
 		$jstatus=$_POST['status'];
+		$user_email=$_SESSION['email'];
 		if(mysql_query("select * from tb_job where title='$title' and location='$location' and comname='$comname';")){
 			mysql_query("delete from tb_job where title='$title' and location='$location' and comname='$comname';");
 		}	
-		mysql_query("insert into tb_job values('$title','$description','$comname','$location','$jstatus');");
+		mysql_query("insert into tb_job values('$title','$description','$comname','$location','$jstatus','$user_email');");
 		echo "Add Successfully~";
 	}else
 		echo "Database connected wrong!!";

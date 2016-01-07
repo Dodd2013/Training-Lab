@@ -1,9 +1,8 @@
 <?php 
   session_start();
   if (isset($_SESSION['username'])) {
-    header('Location: user-index.php');
+    header('Location: user.php');
   }
-  session_destroy();
  ?>
 <!DOCTYPE html>
 <html>
@@ -101,7 +100,6 @@
 </head>
 <body>
 <?php
-session_start();
 if ($_SESSION) {
 	if (isset($_SESSION['error'])) {
 		$pr = $_SESSION['error'];

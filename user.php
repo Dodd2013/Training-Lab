@@ -10,6 +10,7 @@ if ($_POST) {
     $data['user_id'] = $username;
     $judge['user_id'] = '=';
     list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
+    //var_dump($mapConData);
     $mData = $db->fetch('select * from tb_users where ' . $conSql, $mapConData);
     //var_dump($mData);
     if($mData==false){
